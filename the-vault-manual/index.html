@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Vault — Manual Home</title>
+  <style>
+    :root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 700px; padding: 3rem 2rem; text-align: center; }
+    h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+    .subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 2rem 1.5rem; transition: border-color 0.15s; }
+    .card:hover { border-color: var(--accent); }
+    .card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .card h2 { font-size: 1.15rem; color: #fff; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    .card .link { display: inline-block; margin-top: 1rem; background: var(--accent); color: #fff; padding: 8px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; }
+    .card .link:hover { opacity: 0.9; text-decoration: none; }
+    .note { color: var(--muted); font-size: 0.78rem; margin-top: 2rem; }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } h1 { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>The Vault</h1>
+  <p class="subtitle">Personal AI Operating System — Documentation</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🛠️</div>
+      <h2>Developer &amp; Operator Manual</h2>
+      <p>Comprehensive technical guide for the owner and AI/Copilot instances. Includes repo structure, brain layer, persona system, testing, commands, security gates, and contribution rules.</p>
+      <a class="link" href="developer/">Open Developer Manual →</a>
+    </div>
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h2>Public Project Guide</h2>
+      <p>Practical, polished introduction to what The Vault is and what it can do — for collaborators, helpers, and anyone who wants to understand the project without developer noise.</p>
+      <a class="link" href="public/">Open Project Guide →</a>
+    </div>
+  </div>
+
+  <p class="note">
+    The Vault — Local-first personal AI operating system &nbsp;·&nbsp; Built by <a href="https://github.com/FerretFatale">FerretFatale</a>
+    <br/>Manual v4 &nbsp;·&nbsp; Generated 2026-05-01
+  </p>
+</div>
+</body>
+</html>
