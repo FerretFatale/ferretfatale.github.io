@@ -113,7 +113,7 @@
   <div class="meta-grid">
     <div class="meta-card"><div class="val">20</div><div class="lbl">Active Personas</div></div>
     <div class="meta-card"><div class="val">v4</div><div class="lbl">Manual Version</div></div>
-    <div class="meta-card"><div class="val">800+</div><div class="lbl">Tests Passing</div></div>
+    <div class="meta-card"><div class="val">1100+</div><div class="lbl">Tests Passing</div></div>
     <div class="meta-card"><div class="val">3</div><div class="lbl">SR Gates Resolved</div></div>
   </div>
   <div class="banner warn">⚠️ <strong>Internal document.</strong> This manual contains repository paths, command-line instructions, security gate details, and implementation notes. Not for external distribution. See the <a href="../public/">Public Project Guide</a> for the public-facing version.</div>
@@ -163,7 +163,7 @@
 pip install -r requirements.txt</code></pre>
 <h3>Step 2 — Run the test suite</h3>
 <pre><code>python -m pytest Copilot_Tests/ -q --tb=short</code></pre>
-<p>Expected: 800+ tests passing, 0 failures.</p>
+<p>Expected: 1100+ tests passing, 0 failures.</p>
 <h3>Step 3 — Check system state</h3>
 <pre><code># Persona count
 python -c "import json; m=json.load(open('persona_manifest.json')); print(len(m), 'personas:', list(m.keys()))"</code></pre>
@@ -475,12 +475,17 @@ tracks version, source hash, sections changed, and timestamp.</p>
   <li>Stage C (live label/category apply): blocked pending human review of policy forms in <code>Human_Input_Forms/</code></li>
 </ul>
 <h3>Proton Bridge (local-only read/search)</h3>
-<p><code>Toolkit/proton_bridge.py</code> &#8212; local IMAP read/search via Proton Mail Bridge. Implemented and smoke-tested.</p>
+<p><code>Toolkit/proton_bridge.py</code> &#8212; local IMAP read/search via Proton Mail Bridge. Implemented; live smoke test deferred pending Proton Bridge desktop app running.</p>
 <ul>
   <li><code>api_get_proton_bridge_setup_status()</code> &#8212; Returns Bridge readiness and reachability (no secrets in output)</li>
+  <li><code>api_get_proton_bridge_dashboard_status()</code> &#8212; Config-only dashboard check (no TCP; safe for auto-refresh)</li>
   <li><code>api_search_proton_bridge_mail(query, folder, limit, include_body, approved_local_read)</code> &#8212; Local IMAP search; requires <code>approved_local_read=True</code></li>
+  <li><code>api_list_proton_mailboxes()</code> &#8212; List IMAP folders/mailboxes</li>
+  <li><code>api_search_proton_headers(query, folder, limit, approved_local_read)</code> &#8212; Header-only search (no body fetch)</li>
+  <li><code>api_get_proton_message_metadata(uid, folder, approved_local_read)</code> &#8212; Single-message metadata</li>
 </ul>
 <p>No connection is attempted without <code>approved_local_read=True</code> and all 4 IMAP env vars present. <code>include_body=False</code> is the safe default. Secrets stay in <code>.env</code> only. Proton Bridge must be installed and running locally.</p>
+<p><strong>Phase 3 design docs:</strong> <code>docs/copilot-output/proton_bridge_local_index_design.md</code> (local index; requires operator review), <code>docs/copilot-output/proton_bridge_smtp_send_design.md</code> (SMTP send; requires operator approval before implementation).</p>
 </section>
 
 <section id="health">
